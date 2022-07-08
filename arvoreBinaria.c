@@ -42,7 +42,34 @@ void inserirEsquerda(No *no, int valor){
 }
 
 void inserirDireita(No *no, int valor){
-
+    if(valor != no->chave){
+        if(valor > no->chave){
+            if(no->direita == NULL){
+                No *novo = (No*)malloc(sizeof(No));
+                novo->chave = valor;
+                novo->direita = NULL;
+                novo->esquerda = NULL;
+                no->direita = novo;
+            }
+            else{
+                inserirDireita(no->direita, valor);
+            }
+        }
+        else{
+            if(no->esquerda == NULL){
+                No *novo = (No*)malloc(sizeof(No));
+                novo->chave = valor;
+                novo->direita = NULL;
+                novo->esquerda = NULL;
+                no->esquerda = novo;
+            }
+            else{
+                inserirEsquerda(no->esquerda, valor);
+            }
+        }
+    }else{
+        printf("negado, elemento existente");
+    }
 }
 
 void inserir(ArvoreBin *arvore, int valor){
