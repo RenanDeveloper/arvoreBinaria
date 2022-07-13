@@ -10,14 +10,25 @@ typedef struct{
     No *raiz;
 }ArvoreBin;
 
+ArvoreBin *criarArvore(){
+    ArvoreBin *arvore = (ArvoreBin*)malloc(sizeof(ArvoreBin));
+    arvore->raiz = NULL;
+    return  arvore;
+}
+
+No *criarNo(int ch){
+    No *novo = (No*)malloc(sizeof(No));
+    novo->chave = ch;
+    novo->esquerda = NULL;
+    novo->direita = NULL;
+    return novo;
+}
+
 void inserirEsquerda(No *no, int valor){
     if(valor != no->chave){
         if(valor < no->chave){
             if(no->esquerda == NULL){
-                No *novo = (No*)malloc(sizeof(No));
-                novo->chave = valor;
-                novo->direita = NULL;
-                novo->esquerda = NULL;
+                No *novo = criarNo(valor);
                 no->esquerda = novo;
             }
             else{
@@ -26,10 +37,7 @@ void inserirEsquerda(No *no, int valor){
         }
         else{
             if(no->direita == NULL){
-                No *novo = (No*)malloc(sizeof(No));
-                novo->chave = valor;
-                novo->direita = NULL;
-                novo->esquerda = NULL;
+                No *novo = criarNo(valor);
                 no->direita = novo;
             }
             else{
@@ -45,10 +53,7 @@ void inserirDireita(No *no, int valor){
     if(valor != no->chave){
         if(valor > no->chave){
             if(no->direita == NULL){
-                No *novo = (No*)malloc(sizeof(No));
-                novo->chave = valor;
-                novo->direita = NULL;
-                novo->esquerda = NULL;
+                No *novo = criarNo(valor);
                 no->direita = novo;
             }
             else{
@@ -57,10 +62,7 @@ void inserirDireita(No *no, int valor){
         }
         else{
             if(no->esquerda == NULL){
-                No *novo = (No*)malloc(sizeof(No));
-                novo->chave = valor;
-                novo->direita = NULL;
-                novo->esquerda = NULL;
+                No *novo = criarNo(valor);
                 no->esquerda = novo;
             }
             else{
@@ -74,10 +76,7 @@ void inserirDireita(No *no, int valor){
 
 void inserir(ArvoreBin *arvore, int valor){
     if(arvore->raiz == NULL){
-        No *novo = (No*)malloc(sizeof(No));
-        novo->chave = valor;
-        novo->direita = NULL;
-        novo->esquerda = NULL;
+        No *novo = criarNo(valor);
         arvore->raiz = novo;
     }else{
         if(valor < arvore->raiz->chave)
