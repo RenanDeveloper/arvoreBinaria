@@ -73,7 +73,7 @@ void inserirDireita(No *no, int valor){
         printf("negado, elemento existente");
     }
 }
-
+//insere um novo nó na árvore
 void inserir(ArvoreBin *arvore, int valor){
     if(arvore->raiz == NULL){
         No *novo = criarNo(valor);
@@ -83,6 +83,49 @@ void inserir(ArvoreBin *arvore, int valor){
             inserirEsquerda(arvore->raiz, valor);
         else
             inserirDireita(arvore->raiz, valor);
+    }
+}
+//imprime os nós, recursivamente, de forma ordenada
+void imprimirOrdem(No *no){
+    if(no != NULL){
+        imprimirOrdem(no->esquerda);
+        printf("%d ",no->chave);
+        imprimirOrdem(no->direita);
+    }
+}
+//imprime os nós, recursivamente, em pre-ordem
+void imprimirPreOrdem(No *no){
+    if(no != NULL){
+        printf("%d ",no->chave);
+        imprimirPreOrdem(no->esquerda);
+        imprimirPreOrdem(no->direita);
+    }
+    
+}
+//imprime os nós, recursivamente, em pos-ordem
+void imprimirPosOrdem(No *no){
+    if(no != NULL){
+        imprimirPosOrdem(no->esquerda);
+        imprimirPosOrdem(no->direita);
+        printf("%d ",no->chave);
+    }
+}
+//imprime a Árvore completa na ordem escolhida pelo usuário
+void imprimirArvore(ArvoreBin *arvore){
+    if(arvore->raiz == NULL){
+        printf("\nArvore vazia\n");
+    }else{
+        int ordem;
+        printf("\nEscolha a ordem de impressao:\n1 - Arvore ordenada\n2 - Arvore em pre-ordem\n3 - Arvore em pos-ordem\n");
+        scanf("%d", &ordem);
+        if(ordem == 1)
+            imprimirOrdem(arvore->raiz);
+        else if(ordem == 2)
+            imprimirPreOrdem(arvore->raiz);
+        else if(ordem == 3)
+            imprimirPosOrdem(arvore->raiz);
+        else
+            printf("\nValor invalido, escolha\n1 - Arvore ordenada\n2 - Arvore em pre-ordem\n3 - Arvore em pos-ordem\n");  
     }
 }
 
