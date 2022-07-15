@@ -130,6 +130,31 @@ void imprimirArvore(ArvoreBin *arvore){
 }
 
 int main(){
+    int menu, chave;
+
+    ArvoreBin *arvore = criaArvore();
+
+    while(menu != 9){
+        printf("\n1 - Inserir no na arvore\n2 - Imprimir arvore\n9 - Sair\n");
+        scanf("%d", &menu);
+
+        switch(menu){
+        case 1:
+            printf("Digite o valor da chave: ");
+            scanf("%d", &chave);
+            inserir(arvore, chave);
+            break;
+        case 2:
+            printf("\nImprimir arvore binaria:\n");
+            imprimirArvore(arvore);
+            break;
+        case 9:
+            printf("\nFechando programa...\n");
+            break;
+        default:
+            printf("\nOpção invalida, escolha entre uma das opcoes\n");
+        }
+    }
 
     return 0;
 }
