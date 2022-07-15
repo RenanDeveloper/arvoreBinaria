@@ -132,7 +132,7 @@ void imprimirArvore(ArvoreBin *arvore){
 int main(){
     int menu, chave;
 
-    ArvoreBin *arvore = criaArvore();
+    ArvoreBin *arvore = criarArvore();
 
     while(menu != 9){
         printf("\n1 - Inserir no na arvore\n2 - Imprimir arvore\n9 - Sair\n");
